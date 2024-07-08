@@ -1,11 +1,11 @@
 import { products, sizes, styles } from "@/src/schema";
-import { neon, neonConfig } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
+import { neonConfig, Pool } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-serverless";
 import { sql } from "drizzle-orm";
 
-const connection = neon(process.env.DATABASE_URL!);
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 neonConfig.fetchConnectionCache = true;
-export const db = drizzle(connection);
+export const db = drizzle(pool);
 
 export async function getProduct(id: number) {
   return db
