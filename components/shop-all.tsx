@@ -1,10 +1,11 @@
-import { getProducts } from "@/lib/drizzle";
+import { getProducts, getRandProducts } from "@/lib/drizzle";
 import { ProductType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 
 export async function ShopAll({ title }: { title?: string }) {
-  const popular: ProductType[] = await getProducts(4);
+  const popular: ProductType[] =
+    title === "Featured" ? await getRandProducts(4) : await getProducts(4);
 
   return (
     <div className="flex flex-col items-center">

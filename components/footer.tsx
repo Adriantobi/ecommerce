@@ -33,7 +33,7 @@ export function Footer() {
                 <input
                   type="text"
                   placeholder="Email"
-                  className="bg-transparent px-4 py-2 w-full outline-none focus-within:translate-y-2 z-10 transition-transform"
+                  className="bg-transparent px-4 py-3 w-full outline-none focus-within:translate-y-2 z-10 transition-transform"
                 />
                 <label
                   htmlFor="email"

@@ -1,4 +1,5 @@
 "use client";
+
 import { Footer } from "@/components/footer";
 import { ProductListLoading } from "@/components/loading/product-list-loading";
 import { ProductLoading } from "@/components/loading/product-loading";
@@ -22,7 +23,6 @@ export default function Products({ params }: { params: { slug: number } }) {
 
   return (
     <main>
-      <Nav />
       <Suspense fallback={<ProductLoading />}>
         <Product
           id={id}
@@ -39,7 +39,6 @@ export default function Products({ params }: { params: { slug: number } }) {
       >
         <YouMayAlsoLike id={id} />
       </Suspense>
-      <Footer />
     </main>
   );
 }

@@ -88,17 +88,27 @@ export async function Product({
             <p className="text-xs">Quantity</p>
             <div className="flex gap-2 border border-white border-opacity-65 w-fit items-center">
               <button
-                onClick={() => setQuantity(quantity - 1)}
-                disabled={quantity === 1}
+                onClick={() => {
+                  if (currentSize?.available) {
+                    setQuantity(quantity - 1);
+                  }
+                }}
+                disabled={quantity === 1 || !currentSize?.available}
                 className="cursor-pointer p-3"
               >
                 -
               </button>
               <span className="w-8 text-center">{quantity}</span>
               <button
-                onClick={() => setQuantity(quantity + 1)}
+                onClick={() => {
+                  if (currentSize?.available) {
+                    setQuantity(quantity + 1);
+                  }
+                }}
                 className="cursor-pointer p-3"
-                disabled={quantity === currentSize?.available}
+                disabled={
+                  quantity === currentSize?.available || !currentSize?.available
+                }
               >
                 +
               </button>

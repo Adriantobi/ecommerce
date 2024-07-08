@@ -9,7 +9,6 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <main>
-      <Nav />
       <Hero />
       <Suspense
         fallback={<ProductListLoading amount={4} title="Most Popular" />}
@@ -20,7 +19,6 @@ export default function Home() {
       <Suspense fallback={<ProductListLoading amount={4} title="Shop All" />}>
         <ShopAll />
       </Suspense>
-      <Footer />
     </main>
   );
 }

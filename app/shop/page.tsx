@@ -11,7 +11,6 @@ export default async function Shop() {
 
   return (
     <main>
-      <Nav />
       <div className="flex flex-col items-center">
         <div className="!max-w-4xl w-full pt-7 pb-9 flex flex-col gap-10">
           <h1 className="text-4xl">Products</h1>
@@ -47,7 +46,6 @@ export default async function Shop() {
           </ul>
         </div>
       </div>
-      <Footer />
     </main>
   );
 }
