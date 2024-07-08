@@ -1,9 +1,15 @@
 "use client";
 import { SearchIcon, ShoppingBagIcon } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function Nav() {
-  const currentPage = window.location.pathname.replace("/", "") || "home";
+  const [currentPage, setCurrentPage] = useState("home");
+
+  useEffect(() => {
+    setCurrentPage(window.location.pathname.slice(1) || "home");
+  }, []);
+
   return (
     <div className="flex justify-center border-b border-b-white border-opacity-15">
       <nav className="!max-w-4xl w-full items-center flex justify-between py-8">
