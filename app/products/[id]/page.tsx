@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
 
@@ -51,7 +51,7 @@ const displayProduct = {
     { name: "2x large", available: 20 },
   ],
   styles: [
-    { name: "crewneck", price: 100 },
+    { name: "crewneck", price: 300 },
     { name: "hoodie", price: null },
   ],
 };
@@ -60,6 +60,10 @@ export default function Products({ params }: { params: { slug: string } }) {
   const [currentSize, setCurrentSize] = useState(displayProduct.sizes[0]);
   const [currentStyle, setCurrentStyle] = useState(displayProduct.styles[0]);
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    setQuantity(1);
+  }, [currentSize, currentStyle]);
 
   return (
     <main>
@@ -79,7 +83,7 @@ export default function Products({ params }: { params: { slug: string } }) {
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-6 pt-2">
               <h1 className="text-4xl max-w-96">{displayProduct.name}</h1>
-              <span>£{displayProduct.price}.00 GBP</span>
+              <span>£{currentStyle.price || displayProduct.price}.00 GBP</span>
             </div>
             <div className="text-xs">
               <Link
