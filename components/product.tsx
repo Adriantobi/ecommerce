@@ -33,7 +33,7 @@ export async function Product({
   return (
     <div className="flex flex-col items-center pt-8">
       <div className="!max-w-4xl w-full flex gap-10">
-        <div className="min-w-[585px] min-h-[585px]">
+        <div className="min-w-[585px] min-h-[585px] max-w-[585px] max-h-[585px]">
           {product[0]?.media && (
             <Image
               src={product[0].media}
@@ -45,7 +45,7 @@ export async function Product({
             />
           )}
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 w-full">
           <div className="flex flex-col gap-6 pt-2">
             <h1 className="text-4xl max-w-96">{product[0]?.name}</h1>
             <span>£{currentStyle?.price ?? product[0]?.price}.00 GBP</span>
