@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getProducts } from "@/lib/drizzle";
+import { getProducts, getRandProducts } from "@/lib/drizzle";
 import { ProductType } from "@/types/types";
 
-export async function YouMayAlsoLike() {
-  const productList: ProductType[] = await getProducts(4);
+export async function YouMayAlsoLike({ id }: { id: number }) {
+  const productList: ProductType[] = await getRandProducts(4, id);
 
   return (
     <div className="flex flex-col items-center">
@@ -34,7 +34,7 @@ export async function YouMayAlsoLike() {
                   >
                     {product.name}
                   </Link>
-                  <p className="text-sm">From £{product?.price} GBP</p>
+                  <p className="text-sm">From £{product?.price}.00 GBP</p>
                 </div>
               </Link>
             </li>

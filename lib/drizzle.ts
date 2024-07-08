@@ -1,33 +1,35 @@
 import { products, sizes, styles } from "@/src/schema";
 import { neonConfig, Pool } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
-import { sql } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new Pool({
+  connectionString: process.env.DB_URL,
+});
 neonConfig.fetchConnectionCache = true;
 export const db = drizzle(pool);
 
 export async function getProduct(id: number) {
+  return db.select().from(products).where(eq(products.id, id));
+}
+
+export async function getProducts(limit: number = 25, offset: number = 0) {
+  return db.select().from(products).limit(limit).offset(offset);
+}
+
+export async function getRandProducts(limit: number = 4, exclude: number = 0) {
   return db
     .select()
     .from(products)
-    .where(sql`id = ${id}`);
-}
-
-export async function getProducts(num: number) {
-  return db.select().from(products).limit(num);
+    .orderBy(sql`RANDOM()`)
+    .limit(limit)
+    .where(sql`id != ${exclude}`);
 }
 
 export async function getSizesByProduct(id: number) {
-  return db
-    .select()
-    .from(sizes)
-    .where(sql`product_id = ${id}`);
+  return db.select().from(sizes).where(eq(sizes.product_id, id));
 }
 
 export async function getStylesByProduct(id: number) {
-  return db
-    .select()
-    .from(styles)
-    .where(sql`product_id = ${id}`);
+  return db.select().from(styles).where(eq(styles.product_id, id));
 }

@@ -35,9 +35,13 @@ export function Nav() {
             </li>
           </ul>
         </span>
-        <span className="flex gap-6 items-center">
-          <SearchIcon strokeWidth={1} size={20} />
-          <ShoppingBagIcon strokeWidth={1} size={20} />
+        <span className="flex items-center">
+          {/*<div className="p-3 cursor-pointer">
+            <SearchIcon strokeWidth={1} size={20} />
+          </div>*/}
+          <Link href="/cart" className="p-3">
+            <ShoppingBagIcon strokeWidth={1} size={20} />
+          </Link>
         </span>
       </nav>
     </div>

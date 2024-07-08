@@ -10,15 +10,8 @@ export default function Home() {
   return (
     <main>
       <Nav />
-      <Hero />
-      <Suspense
-        fallback={<ProductListLoading amount={4} title="Most Popular" />}
-      >
-        <MostPopular />
-      </Suspense>
-
-      <Suspense fallback={<ProductListLoading amount={4} title="Shop All" />}>
-        <ShopAll />
+      <Suspense fallback={<ProductListLoading amount={4} title="Featured" />}>
+        <ShopAll title="Featured" />
       </Suspense>
       <Footer />
     </main>

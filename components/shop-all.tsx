@@ -1,43 +1,16 @@
+import { getProducts } from "@/lib/drizzle";
+import { ProductType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
 
-const popular = [
-  {
-    id: 1,
-    name: "Product 1",
-    price: 100,
-    media:
-      "https://shopswaywear.ca/cdn/shop/files/12095BC4-EBDE-4D7F-B5D7-948707974FD8.jpg?v=1699481558&width=360",
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    price: 200,
-    media:
-      "https://shopswaywear.ca/cdn/shop/files/IMG-0216.jpg?v=1712014943&width=360",
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    price: 300,
-    media:
-      "https://shopswaywear.ca/cdn/shop/files/9B82DD18-F71C-45EB-88F3-7AE4D928B01B.jpg?v=1711067432&width=360",
-  },
-  {
-    id: 4,
-    name: "Product 4",
-    price: 400,
-    media:
-      "https://shopswaywear.ca/cdn/shop/files/95F7C3C2-AADB-4452-9CC2-D246965F92B1.jpg?v=1710815922",
-  },
-];
+export async function ShopAll({ title }: { title?: string }) {
+  const popular: ProductType[] = await getProducts(4);
 
-export function ShopAll() {
   return (
     <div className="flex flex-col items-center">
       <div className="!max-w-4xl w-full pt-7 pb-9 flex flex-col items-center gap-10">
         <div className="w-full flex flex-col gap-10">
-          <h1 className="text-xl">Shop All</h1>
+          <h1 className="text-xl">{title ? title : "Shop All"}</h1>
           <ul className="flex gap-2">
             {popular.map((product) => (
               <li key={product.id}>
