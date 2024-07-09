@@ -3,7 +3,7 @@
 import { cartItemType, ProductType, SizeType, StyleType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type ProductProps = {
   product: ProductType;
@@ -16,6 +16,10 @@ export function Product({ product, sizes, styles }: ProductProps) {
   const [currentSize, setCurrentSize] = useState<SizeType | null>(sizes[0]);
   const [currentStyle, setCurrentStyle] = useState<StyleType | null>(styles[0]);
 
+  useEffect(() => {
+    setQuantity(1);
+  }, [currentSize, currentStyle]);
+
   const addProductToCart = () => {
     const productToAdd = {
       product: product,
@@ -26,19 +30,25 @@ export function Product({ product, sizes, styles }: ProductProps) {
 
     const currentCart = JSON.parse(localStorage.getItem("cart") ?? "[]");
 
-    if (
-      currentCart.some((item: cartItemType) => item.product.id === product.id)
-    ) {
-      const updatedCart = currentCart.map((item: cartItemType) => {
-        if (item.product.id === product.id) {
-          return {
-            ...item,
-            quantity: item.quantity + quantity,
-          };
-        }
-        return item;
-      });
-      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    const productIndex = currentCart.findIndex(
+      (item: cartItemType) =>
+        item.product.id === product.id &&
+        item.size.id === currentSize?.id &&
+        item.style.id === currentStyle?.id,
+    );
+
+    if (productIndex !== -1) {
+      if (
+        currentSize?.available &&
+        currentCart[productIndex].quantity + quantity > currentSize?.available
+      ) {
+        currentCart[productIndex].quantity = currentSize?.available;
+        localStorage.setItem("cart", JSON.stringify(currentCart));
+        return;
+      }
+
+      currentCart[productIndex].quantity += quantity;
+      localStorage.setItem("cart", JSON.stringify(currentCart));
       return;
     } else {
       localStorage.setItem(
