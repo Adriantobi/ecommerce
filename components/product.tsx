@@ -1,43 +1,61 @@
-import {
-  getProduct,
-  getSizesByProduct,
-  getStylesByProduct,
-} from "@/lib/drizzle";
-import { ProductType, SizeType, StyleType } from "@/types/types";
+"use client";
+
+import { cartItemType, ProductType, SizeType, StyleType } from "@/types/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 type ProductProps = {
-  id: number;
-  currentSize: SizeType | null;
-  currentStyle: StyleType | null;
-  setCurrentSize: (size: SizeType) => void;
-  setCurrentStyle: (style: StyleType) => void;
-  quantity: number;
-  setQuantity: (quantity: number) => void;
+  product: ProductType;
+  sizes: SizeType[];
+  styles: StyleType[];
 };
 
-export async function Product({
-  id,
-  currentSize,
-  currentStyle,
-  setCurrentSize,
-  setCurrentStyle,
-  quantity,
-  setQuantity,
-}: ProductProps) {
-  const product: ProductType[] = await getProduct(id);
-  const sizes: SizeType[] = await getSizesByProduct(id);
-  const styles: StyleType[] = await getStylesByProduct(id);
+export function Product({ product, sizes, styles }: ProductProps) {
+  const [quantity, setQuantity] = useState(1);
+  const [currentSize, setCurrentSize] = useState<SizeType | null>(sizes[0]);
+  const [currentStyle, setCurrentStyle] = useState<StyleType | null>(styles[0]);
+
+  const addProductToCart = () => {
+    const productToAdd = {
+      product: product,
+      size: currentSize,
+      style: currentStyle,
+      quantity: quantity,
+    };
+
+    const currentCart = JSON.parse(localStorage.getItem("cart") ?? "[]");
+
+    if (
+      currentCart.some((item: cartItemType) => item.product.id === product.id)
+    ) {
+      const updatedCart = currentCart.map((item: cartItemType) => {
+        if (item.product.id === product.id) {
+          return {
+            ...item,
+            quantity: item.quantity + quantity,
+          };
+        }
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return;
+    } else {
+      localStorage.setItem(
+        "cart",
+        JSON.stringify([...currentCart, productToAdd]),
+      );
+    }
+  };
 
   return (
     <div className="flex flex-col items-center pt-8">
       <div className="!max-w-4xl w-full flex gap-10">
         <div className="min-w-[585px] min-h-[585px] max-w-[585px] max-h-[585px]">
-          {product[0]?.media && (
+          {product?.media && (
             <Image
-              src={product[0].media}
-              alt={product[0].name}
+              src={product.media}
+              alt={product.name}
               width={0}
               height={0}
               sizes="100vw"
@@ -47,8 +65,8 @@ export async function Product({
         </div>
         <div className="flex flex-col gap-3 w-full">
           <div className="flex flex-col gap-6 pt-2">
-            <h1 className="text-4xl max-w-96">{product[0]?.name}</h1>
-            <span>£{currentStyle?.price ?? product[0]?.price}.00 GBP</span>
+            <h1 className="text-4xl max-w-96">{product?.name}</h1>
+            <span>£{currentStyle?.price ?? product?.price}.00 GBP</span>
           </div>
           <div className="text-xs">
             <Link href="/policies/shipping" className="underline text-blue-500">
@@ -94,7 +112,7 @@ export async function Product({
                   }
                 }}
                 disabled={quantity === 1 || !currentSize?.available}
-                className="cursor-pointer p-3"
+                className="cursor-pointer py-3 px-5"
               >
                 -
               </button>
@@ -105,7 +123,7 @@ export async function Product({
                     setQuantity(quantity + 1);
                   }
                 }}
-                className="cursor-pointer p-3"
+                className="cursor-pointer py-3 px-5"
                 disabled={
                   quantity === currentSize?.available || !currentSize?.available
                 }
@@ -113,7 +131,14 @@ export async function Product({
                 +
               </button>
             </div>
-            <span className="bg-zinc-900 w-full text-center py-3 text-sm mt-4 cursor-pointer">
+            <span
+              className="bg-zinc-900 w-full text-center py-3 text-sm mt-4 cursor-pointer"
+              onClick={() => {
+                if (currentSize && currentStyle) {
+                  addProductToCart();
+                }
+              }}
+            >
               Add to cart
             </span>
           </div>

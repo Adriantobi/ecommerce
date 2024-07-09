@@ -8,3 +8,12 @@ export type ProductType = {
   media: string;
   name: string;
 };
+
+export type cartItemType = {
+  product: ProductType;
+  size: SizeType;
+  style: StyleType;
+  quantity: number;
+};
+
+export type cartType = cartItem[];

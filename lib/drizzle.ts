@@ -7,7 +7,6 @@ const pool = new Pool({
   connectionString:
     "postgresql://ecommerce_owner:HT0Bcvsl3Xby@ep-weathered-bush-a20x66qn-pooler.eu-central-1.aws.neon.tech/ecommerce?sslmode=require",
 });
-neonConfig.fetchConnectionCache = true;
 export const db = drizzle(pool);
 
 export async function getProduct(id: number) {

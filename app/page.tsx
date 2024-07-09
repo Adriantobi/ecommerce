@@ -1,8 +1,6 @@
-import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { ProductListLoading } from "@/components/loading/product-list-loading";
 import { MostPopular } from "@/components/most-popular";
-import { Nav } from "@/components/nav";
 import { ShopAll } from "@/components/shop-all";
 import { Suspense } from "react";
 
