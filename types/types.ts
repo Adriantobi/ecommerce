@@ -16,4 +16,4 @@ export type cartItemType = {
   quantity: number;
 };
 
-export type cartType = cartItem[];
+export type cartType = cartItemType[];
