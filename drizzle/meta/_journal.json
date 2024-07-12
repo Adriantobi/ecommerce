@@ -36,6 +36,20 @@
       "when": 1720745293602,
       "tag": "0004_simple_living_lightning",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1720746397549,
+      "tag": "0005_flowery_layla_miller",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1720746667134,
+      "tag": "0006_rare_lizard",
+      "breakpoints": true
     }
   ]
 }

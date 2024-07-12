@@ -1,5 +1,4 @@
 import { serial, text, pgTable, integer, real } from "drizzle-orm/pg-core";
-import { Phudu } from "next/font/google";
 
 export const products = pgTable("products", {
   id: serial("id").primaryKey(),
