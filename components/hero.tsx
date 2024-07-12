@@ -9,6 +9,7 @@ export function Hero() {
           alt="Hero"
           width={1500}
           height={1000}
+          priority={true}
         />
       </div>
       <span className="flex flex-col gap-8 border-b border-b-white border-opacity-15">
