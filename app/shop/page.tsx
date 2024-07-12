@@ -32,12 +32,9 @@ export default async function Shop() {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <Link
-                      href={`/products/${product.id}`}
-                      className="text-xs group-hover:underline"
-                    >
+                    <span className="text-xs group-hover:underline">
                       {product.name}
-                    </Link>
+                    </span>
                     <p className="text-sm">From £{product.price}.00 GBP</p>
                   </div>
                 </Link>

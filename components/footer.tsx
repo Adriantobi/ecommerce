@@ -31,6 +31,7 @@ export function Footer() {
               <h3>Subsribe to our emails</h3>
               <div className="w-[360px] mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
                 <input
+                  id="email"
                   type="text"
                   placeholder="Email"
                   className="bg-transparent px-4 py-3 w-full outline-none focus-within:translate-y-2 z-10 transition-transform"

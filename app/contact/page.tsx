@@ -10,6 +10,7 @@ export default function Home() {
               <span className="flex w-full gap-4 justify-between">
                 <div className="w-full mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
                   <input
+                    id="name"
                     type="text"
                     placeholder="Name"
                     className="bg-transparent px-4 py-3 w-full outline-none focus-within:translate-y-2 z-10 transition-transform"
@@ -24,7 +25,8 @@ export default function Home() {
 
                 <div className="w-full mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
                   <input
-                    type="text"
+                    id="email"
+                    type="email"
                     placeholder="Email"
                     className="bg-transparent px-4 py-3 w-full outline-none focus-within:translate-y-2 z-10 transition-transform"
                   />
@@ -38,7 +40,8 @@ export default function Home() {
               </span>
               <div className="w-full mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
                 <input
-                  type="text"
+                  id="phone"
+                  type="tel"
                   placeholder="Phone number"
                   className="bg-transparent px-4 py-3 w-full outline-none focus-within:translate-y-2 z-10 transition-transform"
                 />
@@ -51,6 +54,7 @@ export default function Home() {
               </div>
               <div className="w-full h-32 mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
                 <textarea
+                  id="comment"
                   placeholder="Comment"
                   className="bg-transparent resize-none h-full px-4 py-3 w-full outline-none focus-within:translate-y-2 z-10 transition-transform"
                 />

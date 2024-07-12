@@ -70,6 +70,7 @@ export function Product({ product, sizes, styles }: ProductProps) {
               height={0}
               sizes="100vw"
               className="object-cover w-full h-full group-hover:scale-110 transition-transform"
+              priority={true}
             />
           )}
         </div>
