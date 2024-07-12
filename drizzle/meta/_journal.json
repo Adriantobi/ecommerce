@@ -29,6 +29,13 @@
       "when": 1720443177232,
       "tag": "0003_wealthy_ironclad",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1720745293602,
+      "tag": "0004_simple_living_lightning",
+      "breakpoints": true
     }
   ]
 }

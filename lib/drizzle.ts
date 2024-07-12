@@ -1,10 +1,11 @@
-import { products, sizes, styles } from "@/src/schema";
+import { comment, products, sizes, styles } from "@/src/schema";
 import { Pool } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import { eq, sql } from "drizzle-orm";
 
 const pool = new Pool({
-  connectionString: process.env.DB_URL,
+  connectionString:
+    "postgresql://ecommerce_owner:HT0Bcvsl3Xby@ep-weathered-bush-a20x66qn-pooler.eu-central-1.aws.neon.tech/ecommerce?sslmode=require",
 });
 export const db = drizzle(pool);
 
@@ -31,4 +32,13 @@ export async function getSizesByProduct(id: number) {
 
 export async function getStylesByProduct(id: number) {
   return db.select().from(styles).where(eq(styles.product_id, id));
+}
+
+export async function submitComment(data: {
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+}) {
+  return db.insert(comment).values(data);
 }

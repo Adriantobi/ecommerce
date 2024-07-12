@@ -1,4 +1,5 @@
 import { serial, text, pgTable, integer, real } from "drizzle-orm/pg-core";
+import { Phudu } from "next/font/google";
 
 export const products = pgTable("products", {
   id: serial("id").primaryKey(),
@@ -23,4 +24,12 @@ export const styles = pgTable("styles", {
     .references(() => products.id),
   name: text("name").notNull(),
   price: real("price").$type<number | null>(),
+});
+
+export const comment = pgTable("comment", {
+  id: serial("id").primaryKey(),
+  name: text("name"),
+  phone: text("phone"),
+  email: text("email").notNull(),
+  message: text("message").notNull(),
 });
