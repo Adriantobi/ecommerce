@@ -3,7 +3,7 @@ import { ProductListLoading } from "@/components/loading/product-list-loading";
 import { ShopAll } from "@/components/shop-all";
 import { Suspense } from "react";
 
-export default function Home() {
+export default function Cart() {
   return (
     <main>
       <div className="flex flex-col items-center">

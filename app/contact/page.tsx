@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Contact() {
   return (
     <main>
       <div className="flex flex-col items-center">
