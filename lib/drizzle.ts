@@ -4,8 +4,7 @@ import { drizzle } from "drizzle-orm/neon-serverless";
 import { eq, sql } from "drizzle-orm";
 
 const pool = new Pool({
-  connectionString:
-    "postgresql://ecommerce_owner:HT0Bcvsl3Xby@ep-weathered-bush-a20x66qn-pooler.eu-central-1.aws.neon.tech/ecommerce?sslmode=require",
+  connectionString: process.env.DB_URL,
 });
 export const db = drizzle(pool);
 
