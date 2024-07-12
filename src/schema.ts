@@ -23,6 +23,7 @@ export const styles = pgTable("styles", {
     .references(() => products.id),
   name: text("name").notNull(),
   price: real("price").$type<number | null>(),
+  size_ids: integer("size_ids").array(),
 });
 
 export const comment = pgTable("comment", {

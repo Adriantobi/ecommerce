@@ -13,12 +13,24 @@ type ProductProps = {
 
 export function Product({ product, sizes, styles }: ProductProps) {
   const [quantity, setQuantity] = useState(1);
+  const [availableSizes, setAvailableSizes] = useState<SizeType[]>([]);
   const [currentSize, setCurrentSize] = useState<SizeType | null>(sizes[0]);
   const [currentStyle, setCurrentStyle] = useState<StyleType | null>(styles[0]);
 
   useEffect(() => {
     setQuantity(1);
   }, [currentSize, currentStyle]);
+
+  useEffect(() => {
+    //whe currentStyle changes, set availableSizes to the sizes that are available for the current style and set currentSize to the first available size
+    if (currentStyle) {
+      const availableSizes = sizes.filter((size) =>
+        currentStyle?.size_ids?.includes(size.id),
+      );
+      setAvailableSizes(availableSizes);
+      setCurrentSize(availableSizes[0]);
+    }
+  }, [currentStyle, sizes]);
 
   const addProductToCart = () => {
     const productToAdd = {
@@ -87,7 +99,7 @@ export function Product({ product, sizes, styles }: ProductProps) {
           <div className="flex flex-col gap-2">
             <p className="text-xs">Size</p>
             <ul className="flex flex-wrap gap-2">
-              {sizes?.map((size) => (
+              {availableSizes?.map((size) => (
                 <li
                   key={size.id}
                   className={`flex px-4 py-2 text-sm border border-white border-opacity-65 hover:border-opacity-80 rounded-full cursor-pointer ${currentSize?.name === size.name ? "bg-zinc-900" : ""}`}

@@ -17,8 +17,8 @@ export default async function Products({
 }) {
   const id = params.slug;
   const product: ProductType[] = await getProduct(id);
-  const sizes: SizeType[] = await getSizesByProduct(id);
   const styles: StyleType[] = await getStylesByProduct(id);
+  const sizes: SizeType[] = await getSizesByProduct(id);
 
   return (
     <main>

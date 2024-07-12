@@ -50,6 +50,20 @@
       "when": 1720746667134,
       "tag": "0006_rare_lizard",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1720747598062,
+      "tag": "0007_little_thaddeus_ross",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1720748294627,
+      "tag": "0008_yellow_dreadnoughts",
+      "breakpoints": true
     }
   ]
 }
