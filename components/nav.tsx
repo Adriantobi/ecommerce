@@ -26,9 +26,7 @@ export function Nav() {
     updateCartAmount();
 
     const handleStorageChange = (event: StorageEvent) => {
-      if (event.key === "cart") {
-        updateCartAmount();
-      }
+      updateCartAmount();
     };
 
     window.addEventListener("storage", handleStorageChange);
@@ -47,17 +45,17 @@ export function Nav() {
           </Link>
           <ul className="flex gap-6">
             <li
-              className={`text-xs ${currentPage === "home" ? "underline" : ""}`}
+              className={`text-xs hover:underline ${currentPage === "home" ? "underline" : ""}`}
             >
               <Link href="/">Home</Link>
             </li>
             <li
-              className={`text-xs ${currentPage === "shop" ? "underline" : ""}`}
+              className={`text-xs hover:underline ${currentPage === "shop" ? "underline" : ""}`}
             >
               <Link href="/shop">Shop</Link>
             </li>
             <li
-              className={`text-xs ${currentPage === "contact" ? "underline" : ""}`}
+              className={`text-xs hover:underline ${currentPage === "contact" ? "underline" : ""}`}
             >
               <Link href="/contact">Contact Us</Link>
             </li>

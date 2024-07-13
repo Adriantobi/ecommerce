@@ -68,6 +68,8 @@ export function Product({ product, sizes, styles }: ProductProps) {
         JSON.stringify([...currentCart, productToAdd]),
       );
     }
+
+    window.dispatchEvent(new Event("storage"));
   };
 
   return (
