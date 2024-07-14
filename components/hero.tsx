@@ -16,7 +16,7 @@ export function Hero() {
         <h1 className="sm:text-4xl text-2xl font-bold italic text-center text-wrap">
           Welcome to the future of fashion
         </h1>
-        <p className="text-center text-white text-opacity-65 pb-2 text-wrap">
+        <p className="text-center text-white text-opacity-65 pb-2 text-wrap md:text-base text-sm">
           Shop the latest trends in fashion and accessories.
         </p>
       </span>
