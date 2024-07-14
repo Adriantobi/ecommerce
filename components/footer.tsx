@@ -28,7 +28,7 @@ export function Footer() {
           </span>
           <span className="flex md:flex-row flex-col md:justify-between justify-center mt-9 items-center">
             <div className="flex gap-3.5 flex-col">
-              <h3 className="md:text-base text-sm">Subsribe to our emails</h3>
+              <h3 className="md:text-base text-sm">Subscribe to our emails</h3>
               <div className="md:w-[360px] w-auto mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
                 <input
                   id="email"
