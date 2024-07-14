@@ -8,16 +8,18 @@ export async function YouMayAlsoLike({ id }: { id: number }) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="!max-w-4xl w-full pt-7 pb-9 flex flex-col gap-10">
-        <h1 className="text-xl">You may also like</h1>
-        <ul className="flex gap-2">
+      <div className="!max-w-4xl w-full pt-7 pb-9 flex flex-col mg:gap-10 gap-6">
+        <h1 className="mg:text-xl mg:px-0 md:px-12 px-4 text-lg">
+          You may also like
+        </h1>
+        <ul className="mg:flex mg:px-0 md:px-12 px-4 gap-2 grid grid-cols-2">
           {productList.map((product) => (
             <li key={product?.id}>
               <Link
                 href={`/products/${product?.id}`}
                 className="flex gap-7 flex-col cursor-pointer group"
               >
-                <div className="w-[220px] h-[220px] overflow-hidden">
+                <div className="mg:w-[220px] mg:h-[220px] w-full aspect-square overflow-hidden">
                   <Image
                     src={product?.media}
                     alt={product?.name}

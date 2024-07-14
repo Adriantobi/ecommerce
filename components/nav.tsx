@@ -1,7 +1,7 @@
 "use client";
 
 import { cartType } from "@/types/types";
-import { SearchIcon, ShoppingBagIcon } from "lucide-react";
+import { MenuIcon, SearchIcon, ShoppingBagIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -38,12 +38,15 @@ export function Nav() {
 
   return (
     <div className="flex justify-center border-b border-b-white border-opacity-15">
-      <nav className="!max-w-4xl w-full items-center flex justify-between py-8">
+      <nav className="!max-w-4xl w-full items-center flex justify-between mg:py-8 py-2">
+        <div className="p-3 relative mg:hidden flex">
+          <MenuIcon strokeWidth={1} size={20} />
+        </div>
         <span className="flex items-center gap-8">
           <Link href="/" className="text-base">
             Cool Name
           </Link>
-          <ul className="flex gap-6">
+          <ul className="mg:flex gap-6 hidden">
             <li
               className={`text-xs hover:underline ${currentPage === "home" ? "underline" : ""}`}
             >

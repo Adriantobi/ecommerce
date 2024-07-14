@@ -74,8 +74,8 @@ export function Product({ product, sizes, styles }: ProductProps) {
 
   return (
     <div className="flex flex-col items-center pt-8">
-      <div className="!max-w-4xl w-full flex gap-10">
-        <div className="min-w-[585px] min-h-[585px] max-w-[585px] max-h-[585px]">
+      <div className="!max-w-4xl w-full mg:flex md:grid md:grid-cols-2 flex flex-col gap-10 mg:px-0 md:px-12 px-4">
+        <div className="mg:min-w-[585px] mg:min-h-[585px] mg:max-w-[585px] mg:max-h-[585px] w-full aspect-square overflow-hidden">
           {product?.media && (
             <Image
               src={product.media}

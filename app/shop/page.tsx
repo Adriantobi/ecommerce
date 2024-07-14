@@ -13,15 +13,17 @@ export default async function Shop() {
     <main>
       <div className="flex flex-col items-center">
         <div className="!max-w-4xl w-full pt-7 pb-9 flex flex-col gap-10">
-          <h1 className="text-4xl">Products</h1>
-          <ul className="grid grid-cols-4 gap-2">
+          <h1 className="md:text-4xl text-2xl mg:px-0 md:px-12 px-4">
+            Products
+          </h1>
+          <ul className="mg:px-0 md:px-12 px-4 gap-2 grid mg:grid-cols-4 grid-cols-2">
             {result.map((product) => (
               <li key={product.id}>
                 <Link
                   href={`/products/${product.id}`}
                   className="flex gap-7 flex-col cursor-pointer group"
                 >
-                  <div className="w-[220px] h-[220px] overflow-hidden">
+                  <div className="mg:w-[220px] mg:h-[220px] w-full aspect-square overflow-hidden">
                     <Image
                       src={product.media}
                       alt={product.name}

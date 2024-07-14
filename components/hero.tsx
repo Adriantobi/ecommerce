@@ -13,10 +13,10 @@ export function Hero() {
         />
       </div>
       <span className="flex flex-col gap-8 border-b border-b-white border-opacity-15">
-        <h1 className="text-4xl font-bold italic text-center">
+        <h1 className="sm:text-4xl text-2xl font-bold italic text-center text-wrap">
           Welcome to the future of fashion
         </h1>
-        <p className="text-center text-white text-opacity-65 pb-2">
+        <p className="text-center text-white text-opacity-65 pb-2 text-wrap">
           Shop the latest trends in fashion and accessories.
         </p>
       </span>

@@ -5,10 +5,10 @@ export function Footer() {
   return (
     <>
       <div className="flex flex-col w-full items-center border-t border-t-white border-opacity-15 mt-12">
-        <div className="!max-w-4xl w-full">
-          <span className="flex flex-col items-center mt-9 gap-5">
+        <div className="mg:!max-w-4xl max-w-full mg:px-0 px-12 w-full">
+          <span className="flex flex-col md:items-center items-start mt-9 gap-5">
             <h3>Support Us</h3>
-            <ul className="flex gap-5">
+            <ul className="flex gap-5 md:flex-row flex-col">
               <li className="text-sm text-white text-opacity-65 hover:underline cursor-pointer">
                 Contact Us
               </li>
@@ -26,10 +26,10 @@ export function Footer() {
               </li>
             </ul>
           </span>
-          <span className="flex justify-between mt-9 items-center">
+          <span className="flex md:flex-row flex-col md:justify-between justify-center mt-9 items-center">
             <div className="flex gap-3.5 flex-col">
-              <h3>Subsribe to our emails</h3>
-              <div className="w-[360px] mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
+              <h3 className="md:text-base text-sm">Subsribe to our emails</h3>
+              <div className="md:w-[360px] w-auto mt-2 flex items-center border border-zinc-900 relative group overflow-hidden">
                 <input
                   id="email"
                   type="text"
@@ -49,7 +49,7 @@ export function Footer() {
                 />
               </div>
             </div>
-            <div className="flex">
+            <div className="flex md:mt-0 mt-9">
               <Link href="https://instagram.com/adrian.td" className="p-3">
                 <InstagramIcon size={20} strokeWidth={1} />
               </Link>
@@ -62,7 +62,7 @@ export function Footer() {
       </div>
 
       <div className="flex flex-col w-full items-center border-t border-t-white border-opacity-15 my-12 pt-12">
-        <div className="!max-w-4xl w-full flex justify-between items-center">
+        <div className="mg:!max-w-4xl max-w-full mg:px-0 px-12 w-full flex md:flex-row flex-col md:gap-0 gap-8 justify-between items-center">
           <span className="flex flex-col gap-4">
             <label className="text-xs">Country/region</label>
             <select className="bg-transparent text-white text-opacity-65 outline-none border border-zinc-900 px-4 py-2">
@@ -71,7 +71,7 @@ export function Footer() {
               <option>United Kingdom</option>
             </select>
           </span>
-          <span className="text-xs">
+          <span className="md:text-xs text-[10px]">
             © 2024, coolname.{" "}
             <Link
               href="https://adriantd.com"
