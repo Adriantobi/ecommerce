@@ -13,19 +13,54 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function MobileSideNav() {
+export function MobileSideNav({
+  setIsOpen,
+}: {
+  setIsOpen: (isOpen: boolean) => void;
+}) {
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50">
-      <div className="fixed top-0 left-0 mg:w-1/2 w-11/12 h-full bg-black z-50 flex flex-col justify-between">
+    <div
+      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50"
+      onClick={() => {
+        setIsOpen(false);
+      }}
+    >
+      <div
+        className="fixed top-0 left-0 mg:w-1/2 w-11/12 h-full bg-black z-50 flex flex-col justify-between"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <ul className="flex flex-col gap-6 p-8 pt-32">
           <li>
-            <Link href="/">Home</Link>
+            <Link
+              href="/"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link href="/shop">Shop</Link>
+            <Link
+              href="/shop"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              Shop
+            </Link>
           </li>
           <li>
-            <Link href="/contact">Contact Us</Link>
+            <Link
+              href="/contact"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              Contact Us
+            </Link>
           </li>
         </ul>
         <span className="flex pb-4">
@@ -57,6 +92,14 @@ export function Nav() {
   useEffect(() => {
     setCurrentPage(pathname.slice(1) || "home");
   }, [pathname]);
+
+  useEffect(() => {
+    if (isMobileNavOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMobileNavOpen]);
 
   useEffect(() => {
     updateCartAmount();
@@ -123,7 +166,9 @@ export function Nav() {
           </span>
         </nav>
       </div>
-      {isMobileNavOpen ? <MobileSideNav /> : null}
+      {isMobileNavOpen ? (
+        <MobileSideNav setIsOpen={setIsMobileNavOpen} />
+      ) : null}
     </>
   );
 }

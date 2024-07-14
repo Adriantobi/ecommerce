@@ -15,8 +15,8 @@ export async function ProductLoading() {
 
   return (
     <div className="flex flex-col items-center pt-8">
-      <div className="!max-w-4xl w-full flex gap-10">
-        <div className="min-w-[585px] min-h-[585px] max-w-[585px] max-h-[585px] bg-zinc-900 animate-pulse"></div>
+      <div className="!max-w-4xl w-full mg:flex md:grid md:grid-cols-2 flex md:flex-row flex-col gap-10 mg:px-0 md:px-12 px-4">
+        <div className="mg:min-w-[585px] mg:min-h-[585px] mg:max-w-[585px] mg:max-h-[585px] w-full aspect-square bg-zinc-900 animate-pulse"></div>
         <div className="flex flex-col gap-3 w-full">
           <div className="flex flex-col gap-6 pt-2">
             <h1 className="text-4xl max-w-96 text-transparent bg-zinc-900 animate-pulse">
