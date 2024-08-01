@@ -83,6 +83,7 @@ export function Product({ product, sizes, styles }: ProductProps) {
               width={0}
               height={0}
               sizes="100vw"
+              priority
               className="object-cover w-full h-full group-hover:scale-110 transition-transform"
             />
           )}
